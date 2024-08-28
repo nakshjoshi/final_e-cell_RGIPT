@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Cell Website</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            background-color: #f4f4f4;
+        }
+
+        /* Navbar Styles */
+        nav {
+            background-color: #001f3f;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 14px 20px;
+        }
+
+        nav a.logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        nav .icon {
+            display: none;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .nav-links a {
+            padding: 10px 15px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #ff6347;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 90vh;
+            background: url('https://via.placeholder.com/1920x1080') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+        }
+
+        /* About Us Section */
+        .about {
+            padding: 50px 20px;
+            text-align: center;
+            background-color: #fff;
+        }
+
+        .about h2 {
+            font-size: 3rem;
+            color: #001f3f;
+            margin-bottom: 20px;
+        }
+
+        .about p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Events Section */
+        .events {
+            background-color: #f1f1f1;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .events h2 {
+            font-size: 2.5rem;
+            color: #ff6347;
+        }
+
+        .events .event {
+            background-color: white;
+            padding: 20px;
+            margin: 20px auto;
+            width: 90%;
+            max-width: 600px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Gallery Section */
+        .gallery {
+            padding: 50px 20px;
+            text-align: center;
+            background-color: #fff;
+        }
+
+        .gallery h2 {
+            font-size: 2.5rem;
+            color: #001f3f;
+        }
+
+        .gallery img {
+            width: 100%;
+            max-width: 300px;
+            margin: 10px;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Team Section */
+        .team {
+            background-color: #f1f1f1;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .team h2 {
+            font-size: 2.5rem;
+            color: #ff6347;
+        }
+
+        .team .member {
+            display: inline-block;
+            margin: 20px;
+            text-align: center;
+        }
+
+        .team .member img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .team .member img:hover {
+            transform: scale(1.1);
+        }
+
+        .team .member h3 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        /* Contact Us Section */
+        .contact {
+            padding: 50px 20px;
+            background-color: #fff;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 2.5rem;
+            color: #001f3f;
+            margin-bottom: 20px;
+        }
+
+        .contact p {
+            font-size: 1.2rem;
+        }
+
+        .contact i {
+            margin-right: 10px;
+        }
+
+        /* Footer Section */
+        footer {
+            background-color: #001f3f;
+            color: white;
+            padding: 20px 50px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        footer .footer-links ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        footer .footer-links ul li {
+            margin: 10px 0;
+        }
+
+        footer .footer-links ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        footer .footer-links ul li a:hover {
+            color: #ff6347;
+        }
+
+        footer .footer-contact {
+            text-align: center;
+        }
+
+        footer .footer-contact p {
+            margin: 10px 0;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Media Queries */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .nav-links a {
+                padding: 10px;
+                text-align: center;
+                width: 100%;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            nav .icon {
+                display: block;
+                cursor: pointer;
+                font-size: 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            footer {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            footer .footer-links ul {
+                text-align: center;
+            }
+
+            footer .footer-contact {
+                margin-top: 20px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            footer {
+                padding: 10px 20px;
+            }
+
+            footer .footer-links,
+            footer .footer-contact {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav id="navbar">
+        <a href="#" class="logo">E-Cell</a>
+        <div class="nav-links" id="navLinks">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#events">Events</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#team">Team</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <a href="javascript:void(0);" class="icon" onclick="toggleNav()">&#9776;</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div>
+            <h1>Welcome to E-Cell</h1>
+            <p>Empowering Entrepreneurs for Tomorrow</p>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section class="about" id="about">
+        <h2>About Us</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam egestas, nunc non varius venenatis, libero eros convallis est, sed bibendum justo nulla nec turpis.</p>
+    </section>
+
+    <!-- Events Section -->
+    <section class="events" id="events">
+        <h2>Upcoming Events</h2>
+        <div class="event">
+            <h3>Event 1: Innovation Day</h3>
+            <p>Date: 25th August, 2024</p>
+        </div>
+        <div class="event">
+            <h3>Event 2: Startup Bootcamp</h3>
+            <p>Date: 10th September, 2024</p>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <h2>Gallery</h2>
+        <img src="https://via.placeholder.com/300" alt="Gallery Image 1">
+        <img src="https://via.placeholder.com/300" alt="Gallery Image 2">
+        <img src="https://via.placeholder.com/300" alt="Gallery Image 3">
+    </section>
+
+    <!-- Team Section -->
+    <section class="team" id="team">
+        <h2>Meet the Team</h2>
+        <div class="member">
+            <img src="https://via.placeholder.com/150" alt="Member Image 1">
+            <h3>John Doe</h3>
+            <p>CEO</p>
+        </div>
+        <div class="member">
+            <img src="https://via.placeholder.com/150" alt="Member Image 2">
+            <h3>Jane Smith</h3>
+            <p>CTO</p>
+        </div>
+    </section>
+
+    <!-- Contact Us Section -->
+    <section class="contact" id="contact">
+        <h2>Contact Us</h2>
+        <p><i class="bi bi-envelope"></i> Email: contact@ecell.com</p>
+        <p><i class="bi bi-phone"></i> Phone: +91 1234567890</p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#events">Events</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#team">Team</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-contact">
+            <p>Email: contact@ecell.com</p>
+            <p>Phone: +91 1234567890</p>
+        </div>
+    </footer>
+
+    <div class="copyright">
+        <p>&copy; 2024 E-Cell. All Rights Reserved.</p>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        function toggleNav() {
+            var nav = document.getElementById("navLinks");
+            if (nav.className === "nav-links") {
+                nav.className += " active";
+            } else {
+                nav.className = "nav-links";
+            }
+        }
+
+        window.addEventListener("resize", function () {
+            var footer = document.querySelector("footer");
+            if (window.innerWidth < 600) {
+                footer.style.padding = "10px 20px";
+            } else {
+                footer.style.padding = "20px 50px";
+            }
+        });
+    </script>
+</body>
+</html>
